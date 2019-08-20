@@ -5715,3 +5715,644 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 324ms (Views: 309.2ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/" for ::1 at 2019-08-20 11:33:02 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/Cellar/ruby/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  ↳ app/views/posts/index.html.erb:9
+  Rendered posts/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 422ms (Views: 406.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/new" for ::1 at 2019-08-20 11:33:06 -0400
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (36.3ms)
+  Rendered posts/new.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 61ms (Views: 57.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for ::1 at 2019-08-20 11:33:16 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mPn8jjf3wSKO1HjLGTd2xDRKSs/sJrhTs6AKZ+LI3M9KNDulQrI+hIf703PEjpc+7QQxTc1/Gkq53NW7xtAPuQ==", "post"=>{"title"=>"top", "content"=>"https://www.enn.com this site has a bunch of different posts and articles about environmental news!"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:14
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "top"], ["content", "https://www.enn.com this site has a bunch of different posts and articles about environmental news!"], ["created_at", "2019-08-20 15:33:16.449487"], ["updated_at", "2019-08-20 15:33:16.449487"]]
+  ↳ app/controllers/posts_controller.rb:14
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:14
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 6ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/5" for ::1 at 2019-08-20 11:33:16 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (119.2ms)
+  Rendered posts/show.html.erb within layouts/application (133.0ms)
+Completed 200 OK in 175ms (Views: 170.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/0" for ::1 at 2019-08-20 11:33:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/0"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/posts/5" for ::1 at 2019-08-20 11:33:21 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (4.5ms)
+  Rendered posts/show.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 38ms (Views: 34.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts/5" for ::1 at 2019-08-20 11:34:29 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (4.5ms)
+  Rendered posts/show.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 60ms (Views: 58.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/5" for ::1 at 2019-08-20 11:34:56 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:32
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (5.6ms)
+  Rendered posts/show.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 30ms (Views: 27.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/5" for ::1 at 2019-08-20 11:36:17 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms)
+
+
+
+SyntaxError - syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+...ntent.gsub(URI.regexp, link_to"\0","\0") );@output_buffer.sa...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ',', expecting ')'
+...t.gsub(URI.regexp, link_to"\0","\0") );@output_buffer.safe_a...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ')', expecting end
+...URI.regexp, link_to"\0","\0") );@output_buffer.safe_append='
+...                              ^:
+  app/views/posts/show.html.erb:25:in `'
+
+Started POST "/__better_errors/6cc4a894c3669eaa/variables" for ::1 at 2019-08-20 11:36:17 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:36:18 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+
+SyntaxError - syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+...ntent.gsub(URI.regexp, link_to"\0","\0") );@output_buffer.sa...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ',', expecting ')'
+...t.gsub(URI.regexp, link_to"\0","\0") );@output_buffer.safe_a...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ')', expecting end
+...URI.regexp, link_to"\0","\0") );@output_buffer.safe_append='
+...                              ^:
+  app/views/posts/show.html.erb:25:in `'
+
+Started POST "/__better_errors/4d5fda29ee551445/variables" for ::1 at 2019-08-20 11:36:18 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:36:57 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms)
+
+
+
+SyntaxError - syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+...tent.gsub(URI.regexp, link_to "\0","\0") );@output_buffer.sa...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ',', expecting ')'
+....gsub(URI.regexp, link_to "\0","\0") );@output_buffer.safe_a...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ')', expecting end
+...RI.regexp, link_to "\0","\0") );@output_buffer.safe_append='
+...                              ^:
+  app/views/posts/show.html.erb:25:in `'
+
+Started POST "/__better_errors/a0f8a3d6e57001ff/variables" for ::1 at 2019-08-20 11:36:57 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:38:45 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms)
+
+
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+...b(URI.regexp, link_to micropost."\0", "\0") );@output_buffer...
+...                      ^~~~~~~~~
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ',', expecting ')'
+...regexp, link_to micropost."\0", "\0") );@output_buffer.safe_...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ')', expecting end
+...link_to micropost."\0", "\0") );@output_buffer.safe_append='
+...                              ^:
+  app/views/posts/show.html.erb:25:in `'
+
+Started POST "/__better_errors/68b9171283243076/variables" for ::1 at 2019-08-20 11:38:45 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:38:47 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+...b(URI.regexp, link_to micropost."\0", "\0") );@output_buffer...
+...                      ^~~~~~~~~
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ',', expecting ')'
+...regexp, link_to micropost."\0", "\0") );@output_buffer.safe_...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:25: syntax error, unexpected ')', expecting end
+...link_to micropost."\0", "\0") );@output_buffer.safe_append='
+...                              ^:
+  app/views/posts/show.html.erb:25:in `'
+
+Started POST "/__better_errors/63951e833df451ef/variables" for ::1 at 2019-08-20 11:38:47 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:41:45 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (5.7ms)
+  Rendered posts/show.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 40ms (Views: 37.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/0" for ::1 at 2019-08-20 11:43:41 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/0"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/0" for ::1 at 2019-08-20 11:43:44 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/0"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/posts/5" for ::1 at 2019-08-20 11:43:49 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (37.5ms)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 0.1ms)
+
+
+
+SyntaxError - syntax error, unexpected '<', expecting ')'
+...post.content.gsub(URI.regexp, <a href="\0">\0</a>) );@output...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:26: syntax error, unexpected backslash
+...gsub(URI.regexp, <a href="\0">\0</a>) );@output_buffer.safe_...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:27: unknown regexp options - dv
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:27: unmatched close parenthesis: /a>) );@output_buffer.safe_append='
+		</i
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:28: syntax error, unexpected '<'
+	</div>
+	^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:29: unknown regexp options - ct
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:31: syntax error, unexpected '<'
+<section class="section commen...
+^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:32: syntax error, unexpected '<'
+	<div class="container">
+	^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:33: syntax error, unexpected '<'
+		<h2 class="subtitle is-5"><str...
+		^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:33: syntax error, unexpected '<'
+		<h2 class="subtitle is-5"><strong>'.freeze;@output_buffe...
+		                          ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:33: unknown regexp option - h
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:33: syntax error, unexpected tINTEGER, expecting ')'
+..._append='</strong> Comments</h2>
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:35: syntax error, unexpected '<', expecting ')'
+		<div class="comment-form">
+		^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:36: syntax error, unexpected '<'
+			<hr />
+			^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:37: unknown regexp option - h
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:37: syntax error, unexpected tINTEGER, expecting ')'
+...ubtitle is-3">Leave a reply</h3>
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:38: syntax error, unexpected tIDENTIFIER, expecting ')'
+...uffer.append=( render 'comments/form' );@output_buffer.safe_...
+...                       ^~~~~~~~
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:38: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+...append=( render 'comments/form' );@output_buffer.safe_append...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:39: syntax error, unexpected '<', expecting ')'
+		</div>
+		^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:40: unknown regexp options - dv
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:41: syntax error, unexpected '<'
+</section>
+^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:46: unterminated regexp meets end of file
+          end
+              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:46: syntax error, unexpected end-of-input, expecting ')':
+  app/views/posts/show.html.erb:26:in `'
+
+Started POST "/__better_errors/9ac961edde22d1f8/variables" for ::1 at 2019-08-20 11:43:49 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:43:50 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+
+SyntaxError - syntax error, unexpected '<', expecting ')'
+...post.content.gsub(URI.regexp, <a href="\0">\0</a>) );@output...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:26: syntax error, unexpected backslash
+...gsub(URI.regexp, <a href="\0">\0</a>) );@output_buffer.safe_...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:27: unknown regexp options - dv
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:27: unmatched close parenthesis: /a>) );@output_buffer.safe_append='
+		</i
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:28: syntax error, unexpected '<'
+	</div>
+	^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:29: unknown regexp options - ct
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:31: syntax error, unexpected '<'
+<section class="section commen...
+^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:32: syntax error, unexpected '<'
+	<div class="container">
+	^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:33: syntax error, unexpected '<'
+		<h2 class="subtitle is-5"><str...
+		^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:33: syntax error, unexpected '<'
+		<h2 class="subtitle is-5"><strong>'.freeze;@output_buffe...
+		                          ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:33: unknown regexp option - h
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:33: syntax error, unexpected tINTEGER, expecting ')'
+..._append='</strong> Comments</h2>
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:35: syntax error, unexpected '<', expecting ')'
+		<div class="comment-form">
+		^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:36: syntax error, unexpected '<'
+			<hr />
+			^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:37: unknown regexp option - h
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:37: syntax error, unexpected tINTEGER, expecting ')'
+...ubtitle is-3">Leave a reply</h3>
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:38: syntax error, unexpected tIDENTIFIER, expecting ')'
+...uffer.append=( render 'comments/form' );@output_buffer.safe_...
+...                       ^~~~~~~~
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:38: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+...append=( render 'comments/form' );@output_buffer.safe_append...
+...                              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:39: syntax error, unexpected '<', expecting ')'
+		</div>
+		^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:40: unknown regexp options - dv
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:41: syntax error, unexpected '<'
+</section>
+^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:46: unterminated regexp meets end of file
+          end
+              ^
+/Users/girlswhocode/demo_blog/app/views/posts/show.html.erb:46: syntax error, unexpected end-of-input, expecting ')':
+  app/views/posts/show.html.erb:26:in `'
+
+Started POST "/__better_errors/4505dce373f97d50/variables" for ::1 at 2019-08-20 11:43:50 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:43:58 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (5.1ms)
+  Rendered posts/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-20 11:45:13 -0400
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  ↳ app/views/posts/index.html.erb:9
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 43ms (Views: 40.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/5" for ::1 at 2019-08-20 11:45:47 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (5.9ms)
+  Rendered posts/show.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 56ms (Views: 54.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/5" for ::1 at 2019-08-20 11:46:01 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (4.5ms)
+  Rendered posts/show.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 31ms (Views: 28.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/5" for ::1 at 2019-08-20 11:46:42 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+
+SyntaxError - syntax error, unexpected tLABEL, expecting '='
+...\0">\0</a>').html_safe, target:"_blank" );@output_buffer.saf...
+...                        ^~~~~~~:
+  app/views/posts/show.html.erb:26:in `'
+
+Started POST "/__better_errors/4a1327146f527888/variables" for ::1 at 2019-08-20 11:46:42 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:46:53 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (4.7ms)
+  Rendered posts/show.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/5" for ::1 at 2019-08-20 11:48:01 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+
+ArgumentError - wrong number of arguments (given 3, expected 1..2):
+  app/views/posts/show.html.erb:26:in `gsub'
+  app/views/posts/show.html.erb:26:in `_app_views_posts_show_html_erb___1791975516028126589_70209453706580'
+
+Started POST "/__better_errors/89de82141aa7ef77/variables" for ::1 at 2019-08-20 11:48:01 -0400
+Started GET "/posts/5" for ::1 at 2019-08-20 11:48:14 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (6.8ms)
+  Rendered posts/show.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 33ms (Views: 31.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-20 11:48:26 -0400
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  ↳ app/views/posts/index.html.erb:9
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/4" for ::1 at 2019-08-20 11:48:34 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (4.2ms)
+  Rendered posts/show.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-20 11:48:36 -0400
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  ↳ app/views/posts/index.html.erb:9
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 42ms (Views: 39.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2019-08-20 11:48:40 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:33
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:34
+  Rendered collection of comments/_comment.html.erb [1 times] (0.7ms)
+  Rendered comments/_form.html.erb (4.5ms)
+  Rendered posts/show.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 31ms (Views: 28.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-20 11:48:43 -0400
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  ↳ app/views/posts/index.html.erb:9
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.3ms)
+
+
